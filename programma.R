@@ -14,7 +14,7 @@ summary(kordat[, 9:ncol(kordat)])
 sl.by.b <-split(kordat$Slope, kordat$b)
 print(sl.by.b)
 
-kordat$Average <- rowMeans(kordat[, c("Slope", "Intercept", "adj.r.squared")], na.rm=TRUE)
+kordat$Average <- apply(kordat[, c("Slope", "Intercept", "adj.r.squared")], 1, mean)
 
 
 standartnovirze<- sapply(kordat[, 9:ncol(kordat)], function(x) tapply(as.numeric(x), kordat$f, sd, na.rm=TRUE))
